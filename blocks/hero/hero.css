@@ -1,3 +1,8 @@
+.hero-container {
+  margin: 0;
+  padding: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +10,100 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* gradient overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgb(13 33 55 / 93%) 0%,
+    rgb(13 33 55 / 80%) 40%,
+    rgb(26 107 90 / 75%) 100%
+  );
+  z-index: 1;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  width: 100%;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  color: var(--background-color);
+  margin-top: 0;
+  margin-bottom: 16px;
+  line-height: 1.08;
+  max-width: 700px;
+}
+
+.hero p {
+  color: rgb(255 255 255 / 88%);
+  font-size: var(--body-font-size-m);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+.hero .button-wrapper {
+  display: inline-block;
+  margin-right: 12px;
+  margin-top: 8px;
+}
+
+.hero a.button.primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.hero a.button.primary:hover,
+.hero a.button.primary:focus-visible {
+  background-color: #B8842E;
+  border-color: #B8842E;
+}
+
+.hero a.button.secondary {
+  border-color: rgb(255 255 255 / 70%);
   color: var(--background-color);
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero a.button.secondary:hover,
+.hero a.button.secondary:focus-visible {
+  background-color: rgb(255 255 255 / 12%);
+  border-color: var(--background-color);
+  text-decoration: none;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 580px;
+  }
+
+  .hero .hero-content {
+    padding: 80px 32px;
   }
 }

@@ -3,17 +3,35 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
   background-color: var(--background-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 4%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cards > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%), 0 8px 24px rgb(0 0 0 / 8%);
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  padding: 20px 24px 24px;
+}
+
+.cards .cards-card-body h3 {
+  margin-top: 0;
+  font-size: var(--heading-font-size-m);
+}
+
+.cards .cards-card-body p {
+  color: #475569;
+  line-height: 1.6;
 }
 
 .cards .cards-card-image {

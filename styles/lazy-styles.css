@@ -1,1 +1,86 @@
-/* add global styles that can be loaded post LCP here */
+/* section styles loaded post-LCP */
+
+/* center section headings above cards */
+main .section > div > h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+main .section > div > h2 + p {
+  text-align: center;
+  color: #475569;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+}
+
+/* dark section (navy background) */
+main .section.dark {
+  background-color: var(--primary-color, #0D2137);
+  color: var(--background-color);
+  margin: 0;
+  padding: 48px 0;
+}
+
+main .section.dark h2,
+main .section.dark h3 {
+  color: var(--background-color);
+}
+
+/* CTA section */
+main .section.cta {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #162d48 100%);
+  margin: 0;
+  padding: 64px 0;
+  text-align: center;
+}
+
+main .section.cta h2 {
+  color: var(--background-color);
+  margin-top: 0;
+}
+
+main .section.cta p {
+  color: rgb(255 255 255 / 88%);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main .section.cta a.button.accent {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+  padding: 14px 36px;
+  font-size: var(--body-font-size-m);
+}
+
+main .section.cta a.button.accent:hover,
+main .section.cta a.button.accent:focus-visible {
+  background-color: #B8842E;
+  border-color: #B8842E;
+}
+
+main .section.cta a.button.secondary {
+  border-color: rgb(255 255 255 / 70%);
+  color: var(--background-color);
+}
+
+main .section.cta a.button.secondary:hover,
+main .section.cta a.button.secondary:focus-visible {
+  background-color: rgb(255 255 255 / 12%);
+  border-color: var(--background-color);
+}
+
+main .section.cta .button-wrapper {
+  display: inline-block;
+  margin: 4px 8px;
+}
+
+@media (width >= 900px) {
+  main .section.cta {
+    padding: 80px 0;
+  }
+}

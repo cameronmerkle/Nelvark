@@ -20,11 +20,31 @@ import {
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/') && !path.startsWith('//')) {
-    const resp = await fetch(`${path}.plain.html`);
-    if (resp.ok) {
-      const main = document.createElement('main');
-      main.innerHTML = await resp.text();
+    const main = document.createElement('main');
 
+    // On localhost, prefer full HTML (local content) over .plain.html (remote proxy)
+    if (window.location.hostname === 'localhost') {
+      const resp = await fetch(path);
+      if (resp.ok) {
+        const html = await resp.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const docMain = doc.querySelector('main');
+        if (docMain && docMain.children.length) {
+          main.innerHTML = docMain.innerHTML;
+        }
+      }
+    }
+
+    // Fall back to .plain.html (standard EDS behavior)
+    if (!main.children.length) {
+      const resp = await fetch(`${path}.plain.html`);
+      if (resp.ok) {
+        main.innerHTML = await resp.text();
+      }
+    }
+
+    if (main.children.length) {
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {
         main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
